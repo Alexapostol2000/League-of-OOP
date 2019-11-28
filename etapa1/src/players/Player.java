@@ -12,6 +12,7 @@ public abstract class Player {
     private boolean ignited;
     private int dmgignite;
     private int nrignite;
+    private int posiblehp;
 
     public void setNrignite(int nrignite) {
         this.nrignite = nrignite;
