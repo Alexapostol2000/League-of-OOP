@@ -3,7 +3,6 @@ package main;
 import map.Map;
 import players.*;
 
-import javax.lang.model.util.ElementScanner6;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,19 +41,18 @@ public class Main {
         }
 
         Game game = new Game();
-        for (int i=0;i<gameInput.getmRounds();i++) {
+        for (int i = 0; i < gameInput.getmRounds(); i++) {
             game.moveplayers(players, gameInput.getRounds().get(i));
-            game.fight(players);
+            game.fight(players, harta);
         }
 
         FileWriter fw = new FileWriter(args[1]);
         for (Player player : players) {
-            if(player.isDead()==true) {
+            if (player.isDead() == true) {
                 fw.write(player.getType() + " " + "dead");
-            }
-            else {
-                fw.write(player.getType()+" "+player.getLevel()+" "+player.getXp()+" "+player.getHp()
-                        +" "+player.getPozi()+" "+player.getPozj());
+            } else {
+                fw.write(player.getType() + " " + player.getLevel() + " " + player.getXp() + " " + player.getHp()
+                        + " " + player.getPozi() + " " + player.getPozj());
             }
             fw.write("\n");
         }

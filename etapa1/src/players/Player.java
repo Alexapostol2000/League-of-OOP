@@ -1,6 +1,6 @@
 package players;
 
-public class Player {
+public abstract class Player {
     private String type;
     private int hp;
     private int xp;
@@ -8,7 +8,18 @@ public class Player {
     private int pozi;
     private int pozj;
     private boolean dead;
+    private boolean stan;
+    private boolean ignited;
+    private int dmgignite;
+    private int nrignite;
 
+    public void setNrignite(int nrignite) {
+        this.nrignite = nrignite;
+    }
+
+    public int getNrignite() {
+        return nrignite;
+    }
 
     public Player(String type, int hp, int xp, int level, int pozi, int pozj, boolean dead) {
         this.type = type;
@@ -20,6 +31,22 @@ public class Player {
         this.dead = dead;
     }
 
+    public boolean isIgnited() {
+        return ignited;
+    }
+
+    public void setIgnited(boolean ignited) {
+        this.ignited = ignited;
+    }
+
+    public int getDmgignite() {
+        return dmgignite;
+    }
+
+    public void setDmgignite(int dmgignite) {
+        this.dmgignite = dmgignite;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -29,31 +56,38 @@ public class Player {
                 ", level=" + level +
                 ", pozi=" + pozi +
                 ", pozj=" + pozj +
+                ", dead=" + dead +
+                ", stan=" + stan +
+                ", ignited=" + ignited +
+                ", dmgignite=" + dmgignite +
                 '}';
     }
-    public void getdamage(int damage){
-        if(getHp()<damage){
+
+    public void getdamage(int damage) {
+        if (getHp() <= damage) {
             setHp(0);
             setDead(true);
-        }
-        else {
-            setHp(getHp() - damage);
-        }
-    }
-    public void levelup() {
-        if (xp >= 250 && xp < 300) {
-            setLevel(1);
-        }
-        if (xp >= 300 && xp < 350) {
-            setLevel(2);
-        }
-        if (xp >= 350 && xp < 400) {
-            setLevel(3);
-        }
-        if (xp >= 400) {
-            setLevel(4);
+        } else {
+            int hp=getHp();
+            hp-=damage;
+            setHp(hp);
         }
     }
+
+    public void levelup()
+    {
+
+    }
+
+
+    public boolean isStan() {
+        return stan;
+    }
+
+    public void setStan(boolean stan) {
+        this.stan = stan;
+    }
+
 
     public String getType() {
         return type;
@@ -111,4 +145,9 @@ public class Player {
     public void setPozj(int pozj) {
         this.pozj = pozj;
     }
+
+    public int calculatedamage(Player player, char type) {
+        return 0;
+    }
 }
+

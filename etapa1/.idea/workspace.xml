@@ -38,7 +38,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/git-bash.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../lab7" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -154,7 +154,7 @@
       <workItem from="1574805256171" duration="4281000" />
       <workItem from="1574809723077" duration="9359000" />
       <workItem from="1574863210897" duration="36000" />
-      <workItem from="1574864285383" duration="14019000" />
+      <workItem from="1574864285383" duration="34198000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,4 @@
-R dead
-W dead
-W dead
-W dead
+R 0 0 600 0 1
+W 0 0 400 0 1
+W 0 0 400 0 1
+W 0 0 400 1 1
