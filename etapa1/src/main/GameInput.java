@@ -12,8 +12,9 @@ public class GameInput {
     private int nrpers;
     private int length;
     private int width;
-    public GameInput(int mRounds, int nrpers, int length, int width, List<String> players,
-                     List<String> typeground, List<String> rounds, List<Integer> position) {
+
+    public GameInput(final int mRounds, final int nrpers, final int length, final int width, final List<String> players,
+                     final List<String> typeground, final List<String> rounds, final List<Integer> position) {
         this.mRounds = mRounds;
         this.nrpers = nrpers;
         this.length = length;
@@ -25,7 +26,8 @@ public class GameInput {
     }
 
     public List<Integer> getPosition() {
-        return position; }
+        return position;
+    }
 
     public int getmRounds() {
         return mRounds;

@@ -20,10 +20,10 @@ public final class GameInputLoader {
         List<String> typeground = new ArrayList<>();
         List<String> rounds = new ArrayList<>();
         List<Integer> position = new ArrayList<>();
-        int mRounds=0;
-        int nrpers=0;
-        int length=0;
-        int width=0;
+        int mRounds = 0;
+        int nrpers = 0;
+        int length = 0;
+        int width = 0;
 
         try {
             FileSystem fs = new FileSystem(mInputPath, mOutputPath);
@@ -43,7 +43,7 @@ public final class GameInputLoader {
             }
 
             mRounds = fs.nextInt();
-            for (int i=0;i<mRounds;++i){
+            for (int i = 0; i < mRounds; ++i) {
                 rounds.add(fs.nextWord());
             }
 
@@ -53,6 +53,6 @@ public final class GameInputLoader {
             e1.printStackTrace();
         }
 
-        return new GameInput(mRounds,nrpers,length,width,players,typeground,rounds,position);
+        return new GameInput(mRounds, nrpers, length, width, players, typeground, rounds, position);
     }
 }
