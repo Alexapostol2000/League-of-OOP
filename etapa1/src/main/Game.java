@@ -4,6 +4,8 @@ import players.Player;
 
 import java.util.List;
 
+import static common.Constants.MAXXP;
+import static common.Constants.MULTXP;
 public class Game {
     /*aici se desfasoara luptele intre playerii aflati in acelasi loc pe harta*/
     public void fight(final List<Player> players, final char[][] harta) {
@@ -121,14 +123,14 @@ public class Game {
 
                             if (players.get(j).isDead()) {
                                 players.get(i).setXp(players.get(i).getXp() + Math.max(
-                                        0, 200 - (players.get(i).getLevel()
-                                                - players.get(j).getLevel()) * 40));
+                                        0, MAXXP - (players.get(i).getLevel()
+                                                - players.get(j).getLevel()) * MULTXP));
                             }
 
                             if (players.get(i).isDead()) {
                                 players.get(j).setXp(players.get(j).getXp()
-                                        + Math.max(0, 200 - (players.get(j).getLevel()
-                                        - players.get(i).getLevel()) * 40));
+                                        + Math.max(0, MAXXP - (players.get(j).getLevel()
+                                        - players.get(i).getLevel()) * MULTXP));
                             }
                         }
                     }

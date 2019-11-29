@@ -68,7 +68,7 @@ public abstract class Player {
     public void setDmgignite(final int dmgignite) {
         this.dmgignite = dmgignite;
     }
-
+/*afisare*/
     @Override
     public String toString() {
         return "Player{"

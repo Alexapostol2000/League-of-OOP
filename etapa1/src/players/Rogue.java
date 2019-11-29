@@ -1,10 +1,28 @@
 package players;
+import static common.Constants.XP1;
+import static common.Constants.XP2;
+import static common.Constants.XP3;
+import static common.Constants.XP4;
+import static common.Constants.LVL1;
+import static common.Constants.LVL2;
+import static common.Constants.LVL3;
+import static common.Constants.LVL4;
+import static common.Constants.LVL6;
+import static common.Constants.F2;
+import static common.Constants.F1;
+import static common.Constants.F15;
+import static common.Constants.F25;
+import static common.Constants.MULTXP;
+import static common.Constants.HEALR;
+import static common.Constants.DMGK;
+import static common.Constants.EXM;
+import static common.Constants.EXR;
 
 public class Rogue extends Player {
     private int rc;
 /*cosntruct more*/
     public Rogue(final int pozi, final int pozj) {
-        super("R", 600, 0, 0, pozi, pozj);
+        super("R", HEALR, 0, 0, pozi, pozj);
         setIgnited(false);
         setStan(false);
         setPosiblehp(getHp());
@@ -21,20 +39,20 @@ public class Rogue extends Player {
 /*level manager*/
     @Override
     public void levelup() {
-        if (getXp() >= 250 && getXp() < 300) {
-            setLevel(1);
+        if (getXp() >= XP1 && getXp() < XP2) {
+            setLevel(LVL1);
         }
-        if (getXp() >= 300 && getXp() < 350) {
-            setLevel(2);
+        if (getXp() >= XP2 && getXp() < XP3) {
+            setLevel(LVL2);
         }
-        if (getXp() >= 350 && getXp() < 400) {
-            setLevel(3);
+        if (getXp() >= XP3 && getXp() < XP4) {
+            setLevel(LVL3);
         }
-        if (getXp() >= 400) {
-            setLevel(4);
+        if (getXp() >= XP4) {
+            setLevel(LVL4);
         }
         if (!isDead() && getLevel() != 0) {
-            setHp(600 + 40 * getLevel());
+            setHp(HEALR + MULTXP * getLevel());
             setPosiblehp(getHp());
         }
     }
@@ -42,10 +60,10 @@ public class Rogue extends Player {
     public int backstab(final Player victim, final char type) {
         float damage = 0;
         int real = 0;
-        damage = 200 + 20 * this.getLevel();
-        if (getRc() == 3) {
+        damage = DMGK + EXM * this.getLevel();
+        if (getRc() == LVL3) {
             if (type == 'W') {
-                damage = damage + 0.15f * damage;
+                damage = damage + F15 * damage;
             }
             setRc(0);
         } else {
@@ -53,19 +71,19 @@ public class Rogue extends Player {
         }
 
         if (victim instanceof Rogue) {
-            damage = damage + damage * 0.2f;
+            damage = damage + damage * F2;
         }
         if (victim instanceof Knight) {
-            damage = damage - damage * 0.1f;
+            damage = damage - damage * F1;
         }
         if (victim instanceof Pyromancer) {
-            damage = damage + damage * 0.25f;
+            damage = damage + damage * F25;
         }
         if (victim instanceof Wizard) {
-            damage = damage + damage * 0.25f;
+            damage = damage + damage * F25;
         }
         if (type == 'W') {
-            damage = damage + damage * 0.15f;
+            damage = damage + damage * F15;
         }
         real = Math.round(damage);
         return real;
@@ -74,28 +92,28 @@ public class Rogue extends Player {
     public int paralysis(final Player victim, final char type) {
         float damage = 0;
         int real = 0;
-        damage = 40 + 10 * this.getLevel();
+        damage = MULTXP + EXR * this.getLevel();
         if (victim instanceof Rogue) {
-            damage = damage - damage * 0.1f;
+            damage = damage - damage * F1;
         }
         if (victim instanceof Knight) {
-            damage = damage - damage * 0.2f;
+            damage = damage - damage * F2;
         }
         if (victim instanceof Pyromancer) {
-            damage = damage + damage * 0.20f;
+            damage = damage + damage * F2;
         }
         if (victim instanceof Wizard) {
-            damage = damage + damage * 0.25f;
+            damage = damage + damage * F25;
         }
         if (type == 'W') {
-            damage = damage + damage * 0.15f;
+            damage = damage + damage * F15;
         }
         victim.setParal(true);
         victim.setDmgparal(Math.round(damage));
         if (type == 'W') {
-            victim.setNrparal(6);
+            victim.setNrparal(LVL6);
         } else {
-            victim.setNrparal(3);
+            victim.setNrparal(LVL3);
         }
         real = Math.round(damage);
         return real;
