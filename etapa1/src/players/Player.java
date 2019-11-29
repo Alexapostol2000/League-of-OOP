@@ -9,9 +9,22 @@ public abstract class Player {
     private int pozj;
     private boolean dead;
     private boolean stan;
+    private int nrstan;
+
+    public void setNrstan(int nrstan) {
+        this.nrstan = nrstan;
+    }
+
+    public int getNrstan() {
+        return nrstan;
+    }
+
     private boolean ignited;
     private int dmgignite;
     private int nrignite;
+    private int dmgparal;
+    private int nrparal;
+    private boolean paral;
     private int posiblehp;
 
     public Player(String type, int hp, int xp, int level, int pozi, int pozj, boolean dead) {
@@ -83,10 +96,33 @@ public abstract class Player {
         }
     }
 
+    public void setParal(boolean paral) {
+        this.paral = paral;
+    }
+
+    public boolean isParal() {
+        return paral;
+    }
+
     public void levelup() {
 
     }
 
+    public void setNrparal(int nrparal) {
+        this.nrparal = nrparal;
+    }
+
+    public int getNrparal() {
+        return nrparal;
+    }
+
+    public void setDmgparal(int dmgparal) {
+        this.dmgparal = dmgparal;
+    }
+
+    public int getDmgparal() {
+        return dmgparal;
+    }
 
     public boolean isStan() {
         return stan;
@@ -154,7 +190,7 @@ public abstract class Player {
         this.pozj = pozj;
     }
 
-    public int calculatedamage(Player player, char type,int damaged) {
+    public int calculatedamage(Player player, char type, int damaged) {
         return 0;
     }
 }

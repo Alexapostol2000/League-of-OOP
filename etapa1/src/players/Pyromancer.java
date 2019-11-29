@@ -81,7 +81,7 @@ public class Pyromancer extends Player {
     }
 
     @Override
-    public int calculatedamage(Player victim, char type,int damaged) {
+    public int calculatedamage(Player victim, char type, int damaged) {
         return Ignite(victim, type) + Fireblast(victim, type);
     }
 }

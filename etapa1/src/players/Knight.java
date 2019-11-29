@@ -34,9 +34,8 @@ public class Knight extends Player {
         float damage = 0;
         int real = 0;
         damage = 200 + 30 * this.getLevel();
-        int procent = 20+1*getLevel();
-        if(victim.getHp()<(procent/100)*victim.getPosiblehp())
-        {
+        int procent = 20 + 1 * getLevel();
+        if (victim.getHp() < (procent / 100) * victim.getPosiblehp()) {
             real = victim.getHp();
             return real;
         }
@@ -58,6 +57,7 @@ public class Knight extends Player {
 
     int Slam(Player victim, char type) {
         victim.setStan(true);
+        victim.setNrstan(1);
         float damage = 0;
         int real = 0;
         damage = 100 + 40 * this.getLevel();
@@ -80,7 +80,7 @@ public class Knight extends Player {
         return real;
     }
 
-    public int calculatedamage(Player victim, char type,int damaged) {
+    public int calculatedamage(Player victim, char type, int damaged) {
         return Execute(victim, type) + Slam(victim, type);
     }
 }
