@@ -18,9 +18,6 @@ import static common.Constants.DMGP;
 import static common.Constants.DMGMK;
 
 
-
-
-
 public class Pyromancer extends Player {
     /*cosntruct*/
     public Pyromancer(final int pozi, final int pozj) {

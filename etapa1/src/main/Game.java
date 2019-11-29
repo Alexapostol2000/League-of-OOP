@@ -125,12 +125,14 @@ public class Game {
                                 players.get(i).setXp(players.get(i).getXp() + Math.max(
                                         0, MAXXP - (players.get(i).getLevel()
                                                 - players.get(j).getLevel()) * MULTXP));
+                            players.get(i).levelup();
                             }
 
                             if (players.get(i).isDead()) {
                                 players.get(j).setXp(players.get(j).getXp()
                                         + Math.max(0, MAXXP - (players.get(j).getLevel()
                                         - players.get(i).getLevel()) * MULTXP));
+                            players.get(j).levelup();
                             }
                         }
                     }
