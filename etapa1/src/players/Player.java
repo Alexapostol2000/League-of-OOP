@@ -14,14 +14,6 @@ public abstract class Player {
     private int nrignite;
     private int posiblehp;
 
-    public void setNrignite(int nrignite) {
-        this.nrignite = nrignite;
-    }
-
-    public int getNrignite() {
-        return nrignite;
-    }
-
     public Player(String type, int hp, int xp, int level, int pozi, int pozj, boolean dead) {
         this.type = type;
         this.hp = hp;
@@ -30,6 +22,22 @@ public abstract class Player {
         this.pozi = pozi;
         this.pozj = pozj;
         this.dead = dead;
+    }
+
+    public int getPosiblehp() {
+        return posiblehp;
+    }
+
+    public void setPosiblehp(int posiblehp) {
+        this.posiblehp = posiblehp;
+    }
+
+    public int getNrignite() {
+        return nrignite;
+    }
+
+    public void setNrignite(int nrignite) {
+        this.nrignite = nrignite;
     }
 
     public boolean isIgnited() {
@@ -69,14 +77,13 @@ public abstract class Player {
             setHp(0);
             setDead(true);
         } else {
-            int hp=getHp();
-            hp-=damage;
+            int hp = getHp();
+            hp -= damage;
             setHp(hp);
         }
     }
 
-    public void levelup()
-    {
+    public void levelup() {
 
     }
 
@@ -147,7 +154,7 @@ public abstract class Player {
         this.pozj = pozj;
     }
 
-    public int calculatedamage(Player player, char type) {
+    public int calculatedamage(Player player, char type,int damaged) {
         return 0;
     }
 }
