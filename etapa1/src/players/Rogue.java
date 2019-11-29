@@ -2,22 +2,23 @@ package players;
 
 public class Rogue extends Player {
     private int rc;
-    public Rogue(int pozi, int pozj) {
-        super("R", 600, 0, 0, pozi, pozj, false);
+/*cosntruct more*/
+    public Rogue(final int pozi, final int pozj) {
+        super("R", 600, 0, 0, pozi, pozj);
         setIgnited(false);
         setStan(false);
         setPosiblehp(getHp());
         setRc(0);
     }
-
+/*return round current*/
     public int getRc() {
         return rc;
     }
-
-    public void setRc(int rc) {
+/*set round current*/
+    public void setRc(final int rc) {
         this.rc = rc;
     }
-
+/*level manager*/
     @Override
     public void levelup() {
         if (getXp() >= 250 && getXp() < 300) {
@@ -32,25 +33,23 @@ public class Rogue extends Player {
         if (getXp() >= 400) {
             setLevel(4);
         }
-        if (isDead() == false && getLevel() != 0) {
+        if (!isDead() && getLevel() != 0) {
             setHp(600 + 40 * getLevel());
             setPosiblehp(getHp());
         }
     }
-
-    public int Backstab(Player victim, char type)
-    {
+/*first ability*/
+    public int backstab(final Player victim, final char type) {
         float damage = 0;
         int real = 0;
         damage = 200 + 20 * this.getLevel();
-        if(getRc() == 3){
-            if(type == 'W') {
-                damage = damage+ 0.15f*damage;
+        if (getRc() == 3) {
+            if (type == 'W') {
+                damage = damage + 0.15f * damage;
             }
             setRc(0);
-        }
-        else {
-            setRc(getRc()+1);
+        } else {
+            setRc(getRc() + 1);
         }
 
         if (victim instanceof Rogue) {
@@ -71,9 +70,8 @@ public class Rogue extends Player {
         real = Math.round(damage);
         return real;
     }
-
-    public int Paralysis(Player victim, char type)
-    {
+/*secound ability*/
+    public int paralysis(final Player victim, final char type) {
         float damage = 0;
         int real = 0;
         damage = 40 + 10 * this.getLevel();
@@ -94,18 +92,16 @@ public class Rogue extends Player {
         }
         victim.setParal(true);
         victim.setDmgparal(Math.round(damage));
-        if(type == 'W')
-        {
+        if (type == 'W') {
             victim.setNrparal(6);
-        }
-        else
-        {
+        } else {
             victim.setNrparal(3);
         }
         real = Math.round(damage);
         return real;
     }
-    public int calculatedamage(Player victim, char type, int damaged) {
-        return Backstab(victim, type) + Paralysis(victim, type);
+/*calculate damage*/
+    public int calculatedamage(final Player victim, final char type, final int damaged) {
+        return backstab(victim, type) + paralysis(victim, type);
     }
 }

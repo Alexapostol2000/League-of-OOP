@@ -1,13 +1,14 @@
 package players;
 
 public class Wizard extends Player {
-    public Wizard(int pozi, int pozj) {
-        super("W", 400, 0, 0, pozi, pozj, false);
+   /*construc*/
+    public Wizard(final int pozi, final int pozj) {
+        super("W", 400, 0, 0, pozi, pozj);
         setIgnited(false);
         setStan(false);
         setPosiblehp(getHp());
     }
-
+/*level manager*/
     @Override
     public void levelup() {
         if (getXp() >= 250 && getXp() < 300) {
@@ -22,13 +23,13 @@ public class Wizard extends Player {
         if (getXp() >= 400) {
             setLevel(4);
         }
-        if (isDead() == false && getLevel() != 0) {
+        if (!isDead() && getLevel() != 0) {
             setHp(400 + 30 * super.getLevel());
             setPosiblehp(getHp());
         }
     }
-
-    public int Drain(Player victim, char type) {
+/*first ability*/
+    public int drain(final Player victim, final char type) {
         float damage = 0;
         int real = 0;
         float procent = 20 + 5 * getLevel();
@@ -52,13 +53,15 @@ public class Wizard extends Player {
         return real;
 
     }
-
-    public int Deflect(Player victim, char type, int damaged) {
+/*second ability*/
+    public int deflect(final Player victim, final char type, final int damaged) {
         float damage = 0;
         int real = 0;
+        /*
         if (victim instanceof Knight) {
 
         }
+        */
         if (victim instanceof Wizard) {
             return real;
         }
@@ -80,9 +83,9 @@ public class Wizard extends Player {
         return real;
 
     }
+/*calculate damage*/
+    public int calculatedamage(final Player victim, final char type, final int damaged) {
 
-    public int calculatedamage(Player victim, char type, int damaged) {
-
-        return Drain(victim, type) + Deflect(victim, type, damaged);
+        return drain(victim, type) + deflect(victim, type, damaged);
     }
 }

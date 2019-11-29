@@ -1,15 +1,16 @@
 package players;
 
 public class Knight extends Player {
-    public Knight(int pozi, int pozj) {
+    /*set position*/
+    public Knight(final int pozi, final int pozj) {
 
-        super("K", 900, 0, 0, pozi, pozj, false);
+        super("K", 900, 0, 0, pozi, pozj);
         setIgnited(false);
         setStan(false);
         setPosiblehp(getHp());
 
     }
-
+/*level manager*/
     @Override
     public void levelup() {
         if (getXp() >= 250 && getXp() < 300) {
@@ -24,17 +25,18 @@ public class Knight extends Player {
         if (getXp() >= 400) {
             setLevel(4);
         }
-        if (isDead() == false && getLevel() != 0) {
+        if (!isDead() && getLevel() != 0) {
             setHp(900 + 80 * getLevel());
             setPosiblehp(getHp());
         }
     }
 
-    int Execute(Player victim, char type) {
+    /*first ability*/
+    int execute(final Player victim, final  char type) {
         float damage = 0;
         int real = 0;
         damage = 200 + 30 * this.getLevel();
-        int procent = 20 + 1 * getLevel();
+        int procent = 20 +  getLevel();
         if (victim.getHp() < (procent / 100) * victim.getPosiblehp()) {
             real = victim.getHp();
             return real;
@@ -54,8 +56,8 @@ public class Knight extends Player {
         real = Math.round(damage);
         return real;
     }
-
-    int Slam(Player victim, char type) {
+    /*second ability*/
+    int slam(final Player victim, final char type) {
         victim.setStan(true);
         victim.setNrstan(1);
         float damage = 0;
@@ -79,8 +81,8 @@ public class Knight extends Player {
         real = Math.round(damage);
         return real;
     }
-
-    public int calculatedamage(Player victim, char type, int damaged) {
-        return Execute(victim, type) + Slam(victim, type);
+    /*calculate damage*/
+    public int calculatedamage(final Player victim, final char type, final int damaged) {
+        return execute(victim, type) + slam(victim, type);
     }
 }

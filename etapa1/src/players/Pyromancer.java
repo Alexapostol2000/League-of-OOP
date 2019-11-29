@@ -1,13 +1,14 @@
 package players;
 
 public class Pyromancer extends Player {
-    public Pyromancer(int pozi, int pozj) {
-        super("P", 500, 0, 0, pozi, pozj, false);
+    /*cosntruct*/
+    public Pyromancer(final int pozi, final int pozj) {
+        super("P", 500, 0, 0, pozi, pozj);
         setPosiblehp(getHp());
         setIgnited(false);
         setStan(false);
     }
-
+/*level manager*/
     @Override
     public void levelup() {
         if (getXp() >= 250 && getXp() < 300) {
@@ -22,14 +23,14 @@ public class Pyromancer extends Player {
         if (getXp() >= 400) {
             setLevel(4);
         }
-        if (isDead() == false) {
+        if (!isDead()) {
             setHp(500 + 50 * getLevel());
             setPosiblehp(getHp());
         }
 
     }
-
-    public int Fireblast(Player victim, char type) {
+/*first ability*/
+    public int fireblast(final Player victim, final char type) {
         float damage = 0;
         int real = 0;
         damage = 350 + 50 * this.getLevel();
@@ -52,8 +53,8 @@ public class Pyromancer extends Player {
         real = Math.round(damage);
         return real;
     }
-
-    public int Ignite(Player victim, char type) {
+/*second ability*/
+    public int ignite(final Player victim, final char type) {
         float damage = 0;
         int real = 0;
         damage = 150 + 20 * getLevel();
@@ -79,9 +80,9 @@ public class Pyromancer extends Player {
         real = Math.round(damage) + victim.getDmgignite();
         return real;
     }
-
+/*calculate score*/
     @Override
-    public int calculatedamage(Player victim, char type, int damaged) {
-        return Ignite(victim, type) + Fireblast(victim, type);
+    public int calculatedamage(final Player victim, final char type, final int damaged) {
+        return ignite(victim, type) + fireblast(victim, type);
     }
 }
