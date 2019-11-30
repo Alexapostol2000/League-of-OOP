@@ -95,7 +95,7 @@ public class Pyromancer extends Player {
         if (type == 'V') {
             damage = damage + damage * F25;
         }
-        real = Math.round(damage) + victim.getDmgignite();
+        real = Math.round(damage);
         return real;
     }
 /*calculate score*/

@@ -53,7 +53,6 @@ public class Game {
                                     players.get(j).setNrparal(players.get(j).getNrparal() - 1);
                                 }
                             }
-
                             int damagej = 0, damagei = 0;
                             if (players.get(i).getType().equals("P")) {
                                 damagei = players.get(i).calculatedamage(players.get(j),
@@ -116,7 +115,7 @@ public class Game {
                                                 [players.get(i).getPozj()], 0);
                             }
 
-                          //   System.out.println(damagei+" "+damagej);
+                          // System.out.println(damagei+" "+damagej);
                             players.get(i).getdamage(damagej);
                             players.get(j).getdamage(damagei);
 
