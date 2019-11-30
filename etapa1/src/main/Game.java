@@ -44,14 +44,13 @@ public class Game {
                                     players.get(i).setNrparal(players.get(i).getNrparal() - 1);
                                 }
                             }
-                            if (players.get(j).isIgnited()) {
-                                players.get(j).getdamage(players.get(j).getDmgignite());
-                                if (players.get(j).getNrignite() == 1) {
-                                    players.get(j).setIgnited(false);
-                                    players.get(j).setNrignite(0);
-                                    players.get(j).setIgnited(false);
+                            if (players.get(j).isParal()) {
+                                players.get(j).getdamage(players.get(j).getDmgparal());
+                                if (players.get(j).getNrparal() == 1) {
+                                    players.get(j).setParal(false);
+                                    players.get(j).setNrparal(0);
                                 } else {
-                                    players.get(j).setNrignite(players.get(j).getNrignite() - 1);
+                                    players.get(j).setNrparal(players.get(j).getNrparal() - 1);
                                 }
                             }
 
@@ -117,7 +116,7 @@ public class Game {
                                                 [players.get(i).getPozj()], 0);
                             }
 
-                            // System.out.println(damagei+" "+damagej);
+                          //   System.out.println(damagei+" "+damagej);
                             players.get(i).getdamage(damagej);
                             players.get(j).getdamage(damagei);
 

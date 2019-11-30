@@ -41,7 +41,7 @@ public class Pyromancer extends Player {
         if (getXp() >= XP4) {
             setLevel(LVL4);
         }
-        if (!isDead()) {
+        if (!isDead() && getLevel() != 0) {
             setHp(HEALP + HEALM * getLevel());
             setPosiblehp(getHp());
         }
